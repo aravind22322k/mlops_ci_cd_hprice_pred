@@ -10,5 +10,9 @@ def predict():
     prediction = predict_price(input_data)
     return jsonify({"predicted_price": prediction[0]})
 
+@app.route("/", methods=["GET"])
+def home():
+    return "Welcome to the Housing Price Prediction API! Use the /predict endpoint to make predictions."
+
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=5000)
