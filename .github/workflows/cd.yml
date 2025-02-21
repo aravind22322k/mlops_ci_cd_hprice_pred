@@ -22,10 +22,18 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r requirements.txt
 
+      - name: Create required directories
+        run: |
+          mkdir -p models  # Ensure the models directory exists
+
       - name: Train model
         run: |
           python scripts/train.py
 
-      - name: Deploy Flask app
+      - name: Commit and push model.pkl
         run: |
-          nohup python app.py > log.txt 2>&1 &
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git add models/model.pkl
+          git commit -m "Add trained model file"
+          git push origin main
