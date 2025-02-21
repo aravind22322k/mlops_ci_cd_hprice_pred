@@ -1,4 +1,3 @@
-import pytest
 from scripts.predict import predict_price
 
 
