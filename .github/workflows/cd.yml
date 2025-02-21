@@ -1,15 +1,16 @@
-name: CD Pipeline
+name: CI Pipeline
 
 on:
   push:
     branches:
       - main
+  pull_request:
+    branches:
+      - main
 
 jobs:
-  deploy:
+  test:
     runs-on: ubuntu-latest
-    permissions:
-      contents: write  # Grant write permissions to the GITHUB_TOKEN
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
@@ -24,18 +25,15 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r requirements.txt
 
-      - name: Create required directories
+      - name: Run linting
         run: |
-          mkdir -p models  # Ensure the models directory exists
+          flake8 scripts/ tests/
 
-      - name: Train model
+      - name: Run unit tests
         run: |
-          python scripts/train.py
+          pytest tests/
 
-      - name: Commit and push model.pkl
+      - name: Test Flask application
         run: |
-          git config --global user.name "github-actions[bot]"
-          git config --global user.email "github-actions[bot]@users.noreply.github.com"
-          git add models/model.pkl
-          git commit -m "Add trained model file"
-          git push origin main
+          python -m pip install flask
+          python -m pytest tests/test_flask.py
