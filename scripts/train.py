@@ -5,7 +5,7 @@ import pickle
 
 
 # Load data
-data = pd.read_csv("../data/housing.csv")
+data = pd.read_csv("/data/housing.csv")
 X = data.drop("price", axis=1)
 y = data["price"]
 
