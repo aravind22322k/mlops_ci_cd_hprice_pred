@@ -40,8 +40,8 @@ jobs:
           python scripts/train.py
 
       - name: Run linting
-        run: |
-          flake8 --max-line-length=100 scripts/ tests/
+      - run: |
+      -   flake8 --max-line-length=100 scripts/ tests/
 
       - name: Run unit tests
         run: |
