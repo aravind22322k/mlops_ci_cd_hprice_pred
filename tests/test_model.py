@@ -1,7 +1,8 @@
-from scripts.predict import predict_price  
+from scripts.predict import predict_price
+
 
 def test_predict_price():
-    # Test the predict_price function
+    """Test the predict_price function."""
     input_data = [2000, 3]  # Example input (sqft, bedrooms)
     prediction = predict_price(input_data)
 
