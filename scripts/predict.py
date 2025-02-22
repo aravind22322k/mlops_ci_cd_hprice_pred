@@ -8,13 +8,12 @@ def predict_price(input_data):
 
     # Example model logic (replace with actual model inference)
     prediction = np.mean(input_data) * 1000
- 
+
     return prediction
 
 
 # Ensure the script runs correctly when executed
 if __name__ == "__main__":
     sample_input = [2000, 3]
-    #print(predict_price(sample_input))
-    print(predict_price(sample_input))  # Corrected
-
+    # print(predict_price(sample_input))  # Corrected comment style
+    print(predict_price(sample_input))
