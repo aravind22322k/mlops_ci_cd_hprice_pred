@@ -1,11 +1,20 @@
 import pytest
-from app import app  # Import correctly
+from app import app  # Import the Flask app object
+
 
 @pytest.fixture
 def client():
-    return app.test_client()  # Correct way to initialize Flask's test client
+    # Set up the test client
+    app.config["TESTING"] = True
+    with app.test_client() as client:
+        yield client
+
 
 def test_predict_endpoint(client):
-    response = client.post("/predict", json={"input": [2000, 3]})
+    # Test the /predict endpoint
+    response = client.post(
+        "/predict",
+        json={"input": [2000, 3]},  # Example input
+    )
     assert response.status_code == 200
     assert "predicted_price" in response.get_json()
