@@ -34,7 +34,7 @@ jobs:
             echo "model_exists=false" >> $GITHUB_OUTPUT
           fi
 
-      - name: Train model (if model does not exist)
+      - name: Train model (if model does not exist )
         if: steps.check-model.outputs.model_exists == 'false'
         run: |
           python scripts/train.py
