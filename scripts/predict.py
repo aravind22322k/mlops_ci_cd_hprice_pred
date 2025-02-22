@@ -8,7 +8,7 @@ def predict_price(input_data):
 
     # Example model logic (replace with actual model inference)
     prediction = np.mean(input_data) * 1000
-
+ 
     return prediction
 
 
