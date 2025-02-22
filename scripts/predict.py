@@ -11,7 +11,10 @@ def predict_price(input_data):
     # Convert input to a DataFrame with correct feature names
     input_df = pd.DataFrame([input_data], columns=["sqft", "bedrooms"])
     prediction = model.predict(input_df)  # Model expects a DataFrame
-    return float(prediction[0])  # Convert NumPy array to float
+ #  return float(prediction[0])  # Convert NumPy array to float
+    return prediction.tolist()  # Convert NumPy array to list if necessary
+
+  
 
 
 # Example usage
