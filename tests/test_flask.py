@@ -1,4 +1,5 @@
 import pytest
+import json  # Add this import
 from app import app  # Import the Flask app object
 
 
@@ -14,7 +15,8 @@ def test_predict_endpoint(client):
     # Test the /predict endpoint
     response = client.post(
         "/predict",
-        json={"input": [2000, 3]},  # Example input
+        data=json.dumps({"input": [2000, 3]}),  # Serialize JSON payload
+        content_type="application/json",  # Set content type to JSON
     )
     assert response.status_code == 200
     assert "predicted_price" in response.get_json()
