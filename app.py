@@ -7,8 +7,8 @@ app = Flask(__name__)
 def predict():
     data = request.json
     input_data = data["input"]
-    prediction = predict_price(input_data)
-    return jsonify({"predicted_price": prediction[0]})
+    prediction = predict_price(input_data)  # This is already a float
+    return jsonify({"predicted_price": prediction})  # No indexing needed
 
 @app.route("/", methods=["GET"])
 def home():
