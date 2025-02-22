@@ -1,10 +1,11 @@
 import numpy as np
 
+
 def predict_price(input_data):
     """
     Predict the price based on input data.
     """
-    
+
     # Example model logic (replace with actual model inference)
     prediction = np.mean(input_data) * 1000  
     return prediction
