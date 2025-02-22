@@ -1,9 +1,7 @@
-from scripts.predict import predict_price
-
+from scripts.predict import predict_price  # Import predict_price from scripts/predict.py
 
 def test_predict_price():
-    input_data = [2000, 3]
-    predicted_price = predict_price(input_data)
-    assert isinstance(predicted_price, float), (
-        "Prediction should be a float value"
-    )
+    # Test the predict_price function
+    input_data = [2000, 3]  # Example input
+    prediction = predict_price(input_data)
+    assert isinstance(prediction, float)  # Ensure the prediction is a float
