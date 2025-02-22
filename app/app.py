@@ -8,7 +8,7 @@ def predict():
     data = request.json
     input_data = data["input"]
     prediction = predict_price(input_data)
-    return jsonify({"predicted_price": prediction[0]})
+    return jsonify({"predicted_price": float(prediction)})
 
 @app.route("/", methods=["GET"])
 def home():
