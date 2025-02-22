@@ -18,4 +18,3 @@ def predict_price(input_data):
 if __name__ == "__main__":
     input_data = [2000, 3]  # Example: sqft=2000, bedrooms=3
     print(f"Predicted Price: {predict_price(input_data)}")
-
