@@ -5,7 +5,6 @@ import pandas as pd
 with open("models/model.pkl", "rb") as f:
     model = pickle.load(f)
 
-
 def predict_price(input_data):
     """Predict the price based on input sqft and bedrooms."""
     # Convert input to a DataFrame with correct feature names
@@ -13,9 +12,6 @@ def predict_price(input_data):
     prediction = model.predict(input_df)  # Model expects a DataFrame
  #  return float(prediction[0])  # Convert NumPy array to float
     return prediction.tolist()  # Convert NumPy array to list if necessary
-
-  
-
 
 # Example usage
 if __name__ == "__main__":
